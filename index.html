@@ -94,11 +94,11 @@
         <p>This is a step by step instruction of teaching you how to build a VPN server via AWS.</p>
 <p>I am going back to China for some reasons. Due to Chinese government’s great firewall program, some websites, such as Google or Facebook, are not available in mainland, China. There is no way I can live without them. So An VPN is necessary for me. However, VPN is not cheap, and I, as a broken student, cannot afford it. However, Amazon AWS provided us a way of creating a fair VPN for <strong>FREE</strong>. WOW! here are the detailed steps for guys who wants a free VPN.</p>
 <h3 id="Very-first-step-easy"><a href="#Very-first-step-easy" class="headerlink" title="Very first step :) easy"></a>Very first step :) easy</h3><ol>
-<li>you have to own a credit card, an email, and a cell phone. Just for registration, no charge will be applied. <strong>No Panic!!!</strong></li>
-<li>visit <a href="http://aws.amazon.com" target="_blank" rel="external">http://aws.amazon.com</a>, and sign up for an AWS Account.</li>
+<li>You have to own a credit card, an email, and a cell phone. Just for registration, no charge will be applied. <strong>No Panic!!!</strong></li>
+<li>Visit <a href="http://aws.amazon.com" target="_blank" rel="external">http://aws.amazon.com</a>, and sign up for an AWS Account.</li>
 </ol>
 <h3 id="Second-step-create-a-EC2-instance"><a href="#Second-step-create-a-EC2-instance" class="headerlink" title="Second step - create a EC2 instance"></a>Second step - create a EC2 instance</h3><ol>
-<li>click - Lanuch the AWS Mangament Console - to access to Console.</li>
+<li>Click - Lanuch the AWS Mangament Console - to access to Console.</li>
 <li>On the left side, under Computer &amp; Networking tag, click EC2 link.</li>
 <li>On the right up conner, there is a drop-down manu to select data-center location. Since I will visit China, Tokyo would be fastest. (If you are located somewhere else, just pick closest one)</li>
 <li>In the middle of console, click blue button to launch a instance. After launching, there are multiple Mirror Files, and select Ubuntu Server. This tutorial will based on Ubuntu operating system.</li>
@@ -118,12 +118,12 @@
 <li><p>ssh to instance from your computer</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -i server.pem ubunt@[ip address showed on connect window]</div></pre></td></tr></table></figure>
 </li>
-<li><p>wait for successfully sshing</p>
+<li><p>Wait for successfully sshing</p>
 </li>
 <li>Chill down and have a couple of beer :).</li>
 </ol>
 <h3 id="Fourth-Step-Construct-VPN-server-in-the-Ubuntu-instance"><a href="#Fourth-Step-Construct-VPN-server-in-the-Ubuntu-instance" class="headerlink" title="Fourth Step - Construct VPN server in the Ubuntu instance"></a>Fourth Step - Construct VPN server in the Ubuntu instance</h3><ol>
-<li><p>type in</p>
+<li><p>Type in</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install pptpd</div></pre></td></tr></table></figure>
 </li>
 <li><p>After installation, type in</p>
@@ -132,15 +132,15 @@
 <li><p>Go to the last line, enter</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">localip 192.168.0.1</div><div class="line">remoteip 192.168.0.234-238,192.168.0.245</div></pre></td></tr></table></figure>
 </li>
-<li><p>save and exit</p>
+<li><p>Save and exit</p>
 </li>
-<li><p>type in</p>
+<li><p>Type in</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano /etc/ppp/pptpd-options</div></pre></td></tr></table></figure>
 </li>
-<li><p>add these two lines at the end</p>
+<li><p>Add these two lines at the end</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ms-dns 8.8.4.4</div><div class="line">ms-dns 8.8.8.8</div></pre></td></tr></table></figure>
 </li>
-<li><p>save and exit</p>
+<li><p>Save and exit</p>
 </li>
 <li>In the terminal, type in<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;bridgenb    pptpd   vpnpassword    *&quot; | sudo tee -a /etc/ppp/chap-secrets</div></pre></td></tr></table></figure>
 </li>
@@ -150,7 +150,7 @@
 <li><p>In the terminal, type in</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/pptpd restart</div><div class="line">sudo netstat -ntpl</div></pre></td></tr></table></figure>
 </li>
-<li><p>if below message showed up, meaning everything is on the right track.</p>
+<li><p>If below message showed up, meaning everything is on the right track.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tcp        0      0 0.0.0.0:1723            0.0.0.0:*               LISTEN      958/pptpd</div></pre></td></tr></table></figure>
 </li>
 <li><p>Go back to terminal, type in</p>
@@ -276,6 +276,13 @@
 <aside class="clearfix">
 
   
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="https://github.com/bridgenb" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
 
 
   
@@ -326,7 +333,7 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+		<p> Hello ,I&#39;m Yangqiao(Elvis) Zheng. <br/>
 			This is my blog,believe it or not.</p>
 	</section>
 	 
@@ -335,9 +342,13 @@
 		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
 		
 		
+		<a href="https://github.com/https://github.com/bridgenb" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
+		
+		
+		<a href="https://www.linkedin.com/in/https://www.linkedin.com/in/elvis-zheng-95270855" target="_blank" class="icon-linkedin" title="linkedin"></a>
 		
 		
 		
